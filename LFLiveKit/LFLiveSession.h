@@ -15,6 +15,8 @@
 #import "LFLiveAudioConfiguration.h"
 #import "LFLiveVideoConfiguration.h"
 #import "LFLiveDebug.h"
+#import "LFVideoCapture.h"
+#import "LFAudioCapture.h"
 
 
 
@@ -157,6 +159,10 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 
 /** support outer input pcm audio(set LFLiveCaptureTypeMask) .*/
 - (void)pushAudio:(nullable NSData*)audioData;
+
+- (LFAudioCapture *)audioCaptureSource;
+
+- (LFVideoCapture *)videoCaptureSource;
 
 @end
 

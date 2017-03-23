@@ -81,4 +81,17 @@
  */
 - (nullable instancetype)initWithVideoConfiguration:(nullable LFLiveVideoConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
+- (AVCaptureSession *)getCaptureSession;
+
+- (AVCaptureDeviceInput *)getVideoInput;
+
+
+- (AVCaptureDeviceInput *)getAudioInput;
+
+
+- (AVCaptureAudioDataOutput *)getAudioOutput;
+
+
+- (AVCaptureVideoDataOutput *)getVideoOutput;
+
 @end

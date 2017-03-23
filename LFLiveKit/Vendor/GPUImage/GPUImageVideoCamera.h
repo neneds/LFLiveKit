@@ -153,4 +153,16 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 + (BOOL)isBackFacingCameraPresent;
 + (BOOL)isFrontFacingCameraPresent;
 
+- (AVCaptureDeviceInput *)getVideoInput;
+
+
+- (AVCaptureDeviceInput *)getAudioInput;
+
+
+- (AVCaptureAudioDataOutput *)getAudioOutput;
+
+
+- (AVCaptureVideoDataOutput *)getVideoOutput;
+
+
 @end

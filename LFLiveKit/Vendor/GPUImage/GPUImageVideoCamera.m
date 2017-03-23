@@ -236,6 +236,27 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
     return outputFramebuffer;
 }
 
+- (AVCaptureDeviceInput *)getVideoInput;
+{
+    return videoInput;
+}
+
+- (AVCaptureDeviceInput *)getAudioInput;
+{
+    return audioInput;
+}
+
+- (AVCaptureAudioDataOutput *)getAudioOutput;
+{
+    return audioOutput;
+}
+
+- (AVCaptureVideoDataOutput *)getVideoOutput;
+{
+    return videoOutput;
+}
+
+
 - (void)dealloc 
 {
     [self stopCameraCapture];

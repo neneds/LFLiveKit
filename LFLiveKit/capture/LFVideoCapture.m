@@ -34,6 +34,15 @@
 
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
 
+
+@property (atomic, strong) AVCaptureSession *_captureSession;
+@property (atomic, strong) AVCaptureDeviceInput *videoInput;
+@property (atomic, strong) AVCaptureVideoDataOutput *videoOutput;
+@property (atomic, strong) AVCaptureDeviceInput *audioInput;
+@property (atomic, strong) AVCaptureAudioDataOutput  *audioOutput;
+
+
+
 @end
 
 @implementation LFVideoCapture
@@ -51,11 +60,12 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarChanged:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
         
-        self.beautyFace = YES;
+        self.beautyFace = NO;
         self.beautyLevel = 0.5;
         self.brightLevel = 0.5;
         self.zoomScale = 1.0;
         self.mirror = YES;
+        _videoCamera.isBackFacingCameraPresent;
     }
     return self;
 }
@@ -79,6 +89,11 @@
         _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
         _videoCamera.horizontallyMirrorRearFacingCamera = NO;
         _videoCamera.frameRate = (int32_t)_configuration.videoFrameRate;
+        __captureSession = _videoCamera.captureSession;
+        _videoOutput = _videoCamera.getVideoOutput;
+        _videoInput = _videoCamera.getVideoInput;
+        _audioOutput = _videoCamera.getAudioOutput;
+        _audioInput = _videoCamera.getAudioInput;
     }
     return _videoCamera;
 }
@@ -97,6 +112,31 @@
         [self.videoCamera startCameraCapture];
         if(self.saveLocalVideo) [self.movieWriter startRecording];
     }
+}
+
+- (AVCaptureSession *)getCaptureSession;
+{
+    return __captureSession;
+}
+
+- (AVCaptureDeviceInput *)getVideoInput;
+{
+    return _videoInput;
+}
+
+- (AVCaptureDeviceInput *)getAudioInput;
+{
+    return _audioInput;
+}
+
+- (AVCaptureAudioDataOutput *)getAudioOutput;
+{
+    return _audioOutput;
+}
+
+- (AVCaptureVideoDataOutput *)getVideoOutput;
+{
+    return _videoOutput;
 }
 
 - (void)setPreView:(UIView *)preView {
