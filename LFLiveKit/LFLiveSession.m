@@ -7,8 +7,6 @@
 //
 
 #import "LFLiveSession.h"
-#import "LFVideoCapture.h"
-#import "LFAudioCapture.h"
 #import "LFHardwareVideoEncoder.h"
 #import "LFHardwareAudioEncoder.h"
 #import "LFH264VideoEncoder.h"

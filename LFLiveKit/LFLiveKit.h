@@ -17,6 +17,9 @@
 #import "LFLiveStreamInfo.h"
 #import "LFVideoFrame.h"
 #import "LFLiveDebug.h"
+#import "LFVideoCapture.h"
+#import "LFAudioCapture.h"
+
 
 #endif
 
