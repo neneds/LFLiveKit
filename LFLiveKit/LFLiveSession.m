@@ -85,7 +85,12 @@
         _videoConfiguration = videoConfiguration;
         _adaptiveBitrate = NO;
         _captureType = captureType;
-        _videoCaptureSource.beautyFace;
+        if (!_videoCaptureSource) {
+            if(self.captureType & LFLiveCaptureMaskVideo){
+                _videoCaptureSource = [[LFVideoCapture alloc] initWithVideoConfiguration:_videoConfiguration];
+                _videoCaptureSource.delegate = self;
+            }
+        }
     }
     return self;
 }
@@ -382,12 +387,6 @@
 }
 
 - (LFVideoCapture *)videoCaptureSource {
-    if (!_videoCaptureSource) {
-        if(self.captureType & LFLiveCaptureMaskVideo){
-            _videoCaptureSource = [[LFVideoCapture alloc] initWithVideoConfiguration:_videoConfiguration];
-            _videoCaptureSource.delegate = self;
-        }
-    }
     return _videoCaptureSource;
 }
 

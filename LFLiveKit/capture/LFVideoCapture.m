@@ -65,7 +65,20 @@
         self.brightLevel = 0.5;
         self.zoomScale = 1.0;
         self.mirror = YES;
-        _videoCamera.isBackFacingCameraPresent;
+        
+        if(!_videoCamera){
+            _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionBack];
+            _videoCamera.outputImageOrientation = _configuration.outputImageOrientation;
+            _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
+            _videoCamera.horizontallyMirrorRearFacingCamera = NO;
+            _videoCamera.frameRate = (int32_t)_configuration.videoFrameRate;
+            __captureSession = _videoCamera.captureSession;
+            _videoOutput = _videoCamera.getVideoOutput;
+            _videoInput = _videoCamera.getVideoInput;
+            _audioOutput = _videoCamera.getAudioOutput;
+            _audioInput = _videoCamera.getAudioInput;
+        }
+        
     }
     return self;
 }
@@ -83,18 +96,6 @@
 #pragma mark -- Setter Getter
 
 - (GPUImageVideoCamera *)videoCamera{
-    if(!_videoCamera){
-        _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionBack];
-        _videoCamera.outputImageOrientation = _configuration.outputImageOrientation;
-        _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
-        _videoCamera.horizontallyMirrorRearFacingCamera = NO;
-        _videoCamera.frameRate = (int32_t)_configuration.videoFrameRate;
-        __captureSession = _videoCamera.captureSession;
-        _videoOutput = _videoCamera.getVideoOutput;
-        _videoInput = _videoCamera.getVideoInput;
-        _audioOutput = _videoCamera.getAudioOutput;
-        _audioInput = _videoCamera.getAudioInput;
-    }
     return _videoCamera;
 }
 
