@@ -65,33 +65,6 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 /** The running control start capture or stop capture*/
 @property (nonatomic, assign) BOOL running;
 
-/** The preView will show OpenGL ES view*/
-@property (nonatomic, strong, null_resettable) UIView *preView;
-
-/** The captureDevicePosition control camraPosition ,default front*/
-@property (nonatomic, assign) AVCaptureDevicePosition captureDevicePosition;
-
-/** The beautyFace control capture shader filter empty or beautiy */
-@property (nonatomic, assign) BOOL beautyFace;
-
-/** The beautyLevel control beautyFace Level. Default is 0.5, between 0.0 ~ 1.0 */
-@property (nonatomic, assign) CGFloat beautyLevel;
-
-/** The brightLevel control brightness Level, Default is 0.5, between 0.0 ~ 1.0 */
-@property (nonatomic, assign) CGFloat brightLevel;
-
-/** The torch control camera zoom scale default 1.0, between 1.0 ~ 3.0 */
-@property (nonatomic, assign) CGFloat zoomScale;
-
-/** The torch control capture flash is on or off */
-@property (nonatomic, assign) BOOL torch;
-
-/** The mirror control mirror of front camera is on or off */
-@property (nonatomic, assign) BOOL mirror;
-
-/** The muted control callbackAudioData,muted will memset 0.*/
-@property (nonatomic, assign) BOOL muted;
-
 /*  The adaptiveBitrate control auto adjust bitrate. Default is NO */
 @property (nonatomic, assign) BOOL adaptiveBitrate;
 
@@ -113,20 +86,6 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 /** The reconnectCount control reconnect count (重连次数) *.*/
 @property (nonatomic, assign) NSUInteger reconnectCount;
 
-/*** The warterMarkView control whether the watermark is displayed or not ,if set ni,will remove watermark,otherwise add. 
- set alpha represent mix.Position relative to outVideoSize.
- *.*/
-@property (nonatomic, strong, nullable) UIView *warterMarkView;
-
-/* The currentImage is videoCapture shot */
-@property (nonatomic, strong,readonly ,nullable) UIImage *currentImage;
-
-/* The saveLocalVideo is save the local video */
-@property (nonatomic, assign) BOOL saveLocalVideo;
-
-/* The saveLocalVideoPath is save the local video  path */
-@property (nonatomic, strong, nullable) NSURL *saveLocalVideoPath;
-
 #pragma mark - Initializer
 ///=============================================================================
 /// @name Initializer
@@ -139,12 +98,6 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
    capture unstable.
  */
 - (nullable instancetype)initWithAudioConfiguration:(nullable LFLiveAudioConfiguration *)audioConfiguration videoConfiguration:(nullable LFLiveVideoConfiguration *)videoConfiguration;
-
-/**
- The designated initializer. Multiple instances with the same configuration will make the
- capture unstable.
- */
-- (nullable instancetype)initWithAudioConfiguration:(nullable LFLiveAudioConfiguration *)audioConfiguration videoConfiguration:(nullable LFLiveVideoConfiguration *)videoConfiguration captureType:(LFLiveCaptureTypeMask)captureType NS_DESIGNATED_INITIALIZER;
 
 /** The start stream .*/
 - (void)startLive:(nonnull LFLiveStreamInfo *)streamInfo;
