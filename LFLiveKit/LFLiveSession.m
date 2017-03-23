@@ -14,6 +14,8 @@
 #import "LFLiveStreamInfo.h"
 #import "LFGPUImageBeautyFilter.h"
 #import "LFH264VideoEncoder.h"
+#import "LFVideoCapture.h"
+#import "LFAudioCapture.h"
 
 
 @interface LFLiveSession ()<LFAudioCaptureDelegate, LFVideoCaptureDelegate, LFAudioEncodingDelegate, LFVideoEncodingDelegate, LFStreamSocketDelegate>
@@ -83,6 +85,7 @@
         _videoConfiguration = videoConfiguration;
         _adaptiveBitrate = NO;
         _captureType = captureType;
+        _videoCaptureSource.beautyFace;
     }
     return self;
 }
@@ -144,6 +147,32 @@
         self.hasCaptureAudio = YES;
         if(self.AVAlignment) [self pushSendBuffer:frame];
     }
+}
+
+
+- (AVCaptureSession *)getCaptureSession;
+{
+    return _videoCaptureSource.getCaptureSession;
+}
+
+- (AVCaptureDeviceInput *)getVideoInput;
+{
+    return _videoCaptureSource.getVideoInput;
+}
+
+- (AVCaptureDeviceInput *)getAudioInput;
+{
+    return _videoCaptureSource.getAudioInput;
+}
+
+- (AVCaptureAudioDataOutput *)getAudioOutput;
+{
+    return _videoCaptureSource.getAudioOutput;
+}
+
+- (AVCaptureVideoDataOutput *)getVideoOutput;
+{
+    return _videoCaptureSource.getVideoOutput;
 }
 
 - (void)videoEncoder:(nullable id<LFVideoEncoding>)encoder videoFrame:(nullable LFVideoFrame *)frame {
