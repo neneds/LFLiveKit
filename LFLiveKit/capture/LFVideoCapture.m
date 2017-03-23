@@ -74,7 +74,7 @@
 
 - (GPUImageVideoCamera *)videoCamera{
     if(!_videoCamera){
-        _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionFront];
+        _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionBack];
         _videoCamera.outputImageOrientation = _configuration.outputImageOrientation;
         _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
         _videoCamera.horizontallyMirrorRearFacingCamera = NO;
