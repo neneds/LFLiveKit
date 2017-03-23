@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 @protocol LFLiveSessionDelegate <NSObject>
 
 @optional
+- (void)sessionCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
 /** live status changed will callback */
 - (void)liveSession:(nullable LFLiveSession *)session liveStateDidChange:(LFLiveState)state;
 /** live debug info callback */

@@ -145,6 +145,9 @@
     if (self.uploading) [self.videoEncoder encodeVideoData:pixelBuffer timeStamp:NOW];
 }
 
+- (void)VideoCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    [_delegate sessionCaptureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
+}
 #pragma mark -- EncoderDelegate
 - (void)audioEncoder:(nullable id<LFAudioEncoding>)encoder audioFrame:(nullable LFAudioFrame *)frame {
     //<上传  时间戳对齐

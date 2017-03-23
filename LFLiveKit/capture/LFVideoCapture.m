@@ -72,6 +72,7 @@
             _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
             _videoCamera.horizontallyMirrorRearFacingCamera = NO;
             _videoCamera.frameRate = (int32_t)_configuration.videoFrameRate;
+            _videoCamera.delegate = self;
             __captureSession = _videoCamera.captureSession;
             _videoOutput = _videoCamera.getVideoOutput;
             _videoInput = _videoCamera.getVideoInput;
@@ -83,6 +84,13 @@
     return self;
 }
 
+- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+    
+}
+- (void)GPUImageCameraCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    [_delegate VideoCaptureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
+}
+
 - (void)dealloc {
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -92,6 +100,10 @@
         _gpuImageView = nil;
     }
 }
+
+#pragma mark -- GPUImageCameraDelegate
+
+
 
 #pragma mark -- Setter Getter
 
