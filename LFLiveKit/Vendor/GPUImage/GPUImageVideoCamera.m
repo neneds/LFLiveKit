@@ -891,7 +891,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    [_delegate GPUImageCameraCaptureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sampleBuffer" object:(__bridge id _Nullable)(sampleBuffer)];
     if (!self.captureSession.isRunning)
     {
         return;
