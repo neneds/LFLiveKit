@@ -263,6 +263,7 @@
         _warterMarkView = nil;
     }
     _warterMarkView = warterMarkView;
+    _warterMarkView.frame = CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height);
     self.blendFilter.mix = warterMarkView.alpha;
     [self.waterMarkContentView addSubview:_warterMarkView];
     [self reloadFilter];
