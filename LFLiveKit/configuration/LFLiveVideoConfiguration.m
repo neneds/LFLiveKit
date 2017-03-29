@@ -159,6 +159,16 @@
             configuration.videoSize = CGSizeMake(1920, 1080);
         }
             break;
+        case LFLiveVideoQuality_Low3_land: {
+            configuration.sessionPreset = LFCaptureSessionPreset640x360;
+            configuration.videoFrameRate = 30;
+            configuration.videoMaxFrameRate = 30;
+            configuration.videoMinFrameRate = 15;
+            configuration.videoBitRate = 800 * 1000;
+            configuration.videoMaxBitRate = 960 * 1000;
+            configuration.videoMinBitRate = 600 * 1000;
+            configuration.videoSize = CGSizeMake(640, 360);
+        }
     default:
         break;
     }

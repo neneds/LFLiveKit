@@ -262,10 +262,8 @@
         [_warterMarkView removeFromSuperview];
         _warterMarkView = nil;
     }
-    NSLog(@"WATERMARKVIEW FRAME BEFORE: %@",NSStringFromCGRect(warterMarkView.frame));
     _warterMarkView = warterMarkView;
     _warterMarkView.frame = CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height);
-    NSLog(@"WATERMARKVIEW FRAME AFTER: %@",NSStringFromCGRect(_warterMarkView.frame));
     self.blendFilter.mix = warterMarkView.alpha;
     [self.waterMarkContentView addSubview:_warterMarkView];
     _warterMarkView.translatesAutoresizingMaskIntoConstraints = false;

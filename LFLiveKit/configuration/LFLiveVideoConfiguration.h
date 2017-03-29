@@ -20,6 +20,7 @@ typedef NS_ENUM (NSUInteger, LFLiveVideoSessionPreset){
     LFCaptureSessionPreset854x480 = 3,
     LFCaptureSessionPreset1280x720 = 4,
     LFCaptureSessionPreset1920x1080 = 5,
+    LFCaptureSessionPreset640x360 = 6
     
 };
 
@@ -49,8 +50,11 @@ typedef NS_ENUM (NSUInteger, LFLiveVideoQuality){
     LFLiveVideoQuality_High4_land = 10,
     /// 分辨率： 1920X1080 帧数：30 码率：1200Kps
     LFLiveVideoQuality_High5_land = 11,
+    /// 分辨率： 640 *360 帧数：30 码率：800Kps
+    LFLiveVideoQuality_Low3_land = 12,
     /// 默认配置
     LFLiveVideoQuality_Default = LFLiveVideoQuality_Low2
+    
 };
 
 @interface LFLiveVideoConfiguration : NSObject<NSCoding, NSCopying>
