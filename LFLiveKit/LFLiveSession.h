@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureType) {
 };
 
 
-///< 用来控制采集类型（可以内部采集也可以外部传入等各种组合，支持单音频与单视频,外部输入适用于录屏，无人机等外设介入）
+
 typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
     LFLiveCaptureMaskAudio = (1 << LFLiveCaptureAudio),                                 ///< only inner capture audio (no video)
     LFLiveCaptureMaskVideo = (1 << LFLiveCaptureVideo),                                 ///< only inner capture video (no audio)
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 @protocol LFLiveSessionDelegate <NSObject>
 
 @optional
-- (void)sessionCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
+- (void)liveSession:(nullable LFLiveSession *)session videoCaptureOutput:(nullable AVCaptureOutput *)captureOutput didOutputSampleBuffer:(nullable CMSampleBufferRef)sampleBuffer fromConnection:(nullable AVCaptureConnection *)connection;
 /** live status changed will callback */
 - (void)liveSession:(nullable LFLiveSession *)session liveStateDidChange:(LFLiveState)state;
 /** live debug info callback */

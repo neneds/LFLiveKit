@@ -14,7 +14,7 @@
 /** LFVideoCapture callback videoData */
 @protocol LFVideoCaptureDelegate <NSObject>
 - (void)captureOutput:(nullable LFVideoCapture *)capture pixelBuffer:(nullable CVPixelBufferRef)pixelBuffer;
-- (void)VideoCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
+- (void)VideoCaptureOutput:(nullable AVCaptureOutput *)captureOutput didOutputSampleBuffer:(nullable CMSampleBufferRef)sampleBuffer fromConnection:(nullable AVCaptureConnection *)connection;
 @end
 
 @interface LFVideoCapture : NSObject
@@ -82,17 +82,17 @@
  */
 - (nullable instancetype)initWithVideoConfiguration:(nullable LFLiveVideoConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
-- (AVCaptureSession *)getCaptureSession;
+- (nullable AVCaptureSession *)getCaptureSession;
 
-- (AVCaptureDeviceInput *)getVideoInput;
-
-
-- (AVCaptureDeviceInput *)getAudioInput;
+- (nullable AVCaptureDeviceInput *)getVideoInput;
 
 
-- (AVCaptureAudioDataOutput *)getAudioOutput;
+- (nullable AVCaptureDeviceInput *)getAudioInput;
 
 
-- (AVCaptureVideoDataOutput *)getVideoOutput;
+- (nullable AVCaptureAudioDataOutput *)getAudioOutput;
+
+
+- (nullable AVCaptureVideoDataOutput *)getVideoOutput;
 
 @end

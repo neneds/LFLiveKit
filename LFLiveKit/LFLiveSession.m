@@ -146,7 +146,7 @@
 }
 
 - (void)VideoCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
-    [_delegate sessionCaptureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
+    [_delegate liveSession:self videoCaptureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
 }
 #pragma mark -- EncoderDelegate
 - (void)audioEncoder:(nullable id<LFAudioEncoding>)encoder audioFrame:(nullable LFAudioFrame *)frame {

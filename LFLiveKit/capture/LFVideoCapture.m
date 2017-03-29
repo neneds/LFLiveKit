@@ -18,7 +18,7 @@
 #import "GPUImage.h"
 #endif
 
-@interface LFVideoCapture ()
+@interface LFVideoCapture () <GPUImageVideoCameraDelegate>
 
 @property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
 @property (nonatomic, strong) LFGPUImageBeautyFilter *beautyFilter;
@@ -85,7 +85,7 @@
 }
 
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-    
+  
 }
 - (void)GPUImageCameraCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     [_delegate VideoCaptureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
@@ -262,9 +262,11 @@
         [_warterMarkView removeFromSuperview];
         _warterMarkView = nil;
     }
+    NSLog(@"WATERMARKVIEW FRAME BEFORE: %@",NSStringFromCGRect(warterMarkView.frame));
     _warterMarkView = warterMarkView;
     _warterMarkView.frame = CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height);
     _warterMarkView.autoresizingMask  = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+    NSLog(@"WATERMARKVIEW FRAME AFTER: %@",NSStringFromCGRect(_warterMarkView.frame));
     self.blendFilter.mix = warterMarkView.alpha;
     [self.waterMarkContentView addSubview:_warterMarkView];
     [self reloadFilter];

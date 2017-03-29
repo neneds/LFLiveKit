@@ -15,8 +15,8 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 @protocol GPUImageVideoCameraDelegate <NSObject>
 
 @optional
-- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;
-- (void)GPUImageCameraCaptureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
+- (void)willOutputSampleBuffer:(nullable CMSampleBufferRef)sampleBuffer;
+- (void)GPUImageCameraCaptureOutput:(nullable AVCaptureOutput *)captureOutput didOutputSampleBuffer:(nullable CMSampleBufferRef)sampleBuffer fromConnection:(nullable AVCaptureConnection *)connection;
 @end
 
 
@@ -154,16 +154,16 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 + (BOOL)isBackFacingCameraPresent;
 + (BOOL)isFrontFacingCameraPresent;
 
-- (AVCaptureDeviceInput *)getVideoInput;
+- (nullable AVCaptureDeviceInput *)getVideoInput;
 
 
-- (AVCaptureDeviceInput *)getAudioInput;
+- (nullable AVCaptureDeviceInput *)getAudioInput;
 
 
-- (AVCaptureAudioDataOutput *)getAudioOutput;
+- (nullable AVCaptureAudioDataOutput *)getAudioOutput;
 
 
-- (AVCaptureVideoDataOutput *)getVideoOutput;
+- (nullable AVCaptureVideoDataOutput *)getVideoOutput;
 
 
 @end
