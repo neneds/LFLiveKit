@@ -265,15 +265,14 @@
     NSLog(@"WATERMARKVIEW FRAME BEFORE: %@",NSStringFromCGRect(warterMarkView.frame));
     _warterMarkView = warterMarkView;
     _warterMarkView.frame = CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height);
+    NSLog(@"WATERMARKVIEW FRAME AFTER: %@",NSStringFromCGRect(_warterMarkView.frame));
+    self.blendFilter.mix = warterMarkView.alpha;
+    [self.waterMarkContentView addSubview:_warterMarkView];
     //Constraints
     [_warterMarkView.leadingAnchor constraintEqualToAnchor:_waterMarkContentView.leadingAnchor].active = YES;
     [_warterMarkView.trailingAnchor constraintEqualToAnchor:_waterMarkContentView.trailingAnchor].active = YES;
     [_warterMarkView.topAnchor constraintEqualToAnchor:_waterMarkContentView.topAnchor].active = YES;
     [_warterMarkView.bottomAnchor constraintEqualToAnchor:_waterMarkContentView.bottomAnchor].active = YES;
-    
-    NSLog(@"WATERMARKVIEW FRAME AFTER: %@",NSStringFromCGRect(_warterMarkView.frame));
-    self.blendFilter.mix = warterMarkView.alpha;
-    [self.waterMarkContentView addSubview:_warterMarkView];
     [self reloadFilter];
 }
 
