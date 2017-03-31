@@ -265,16 +265,16 @@
         _warterMarkView = nil;
     }
     _warterMarkView = warterMarkView;
-    //_warterMarkView.frame = CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height);
+    _warterMarkView.frame = CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height);
     self.blendFilter.mix = warterMarkView.alpha;
     [self.waterMarkContentView addSubview:_warterMarkView];
-//    _warterMarkView.translatesAutoresizingMaskIntoConstraints = false;
-//    //Constraints
-//    [_warterMarkView.leadingAnchor constraintEqualToAnchor:_waterMarkContentView.leadingAnchor].active = YES;
-//    [_warterMarkView.trailingAnchor constraintEqualToAnchor:_waterMarkContentView.trailingAnchor].active = YES;
-//    [_warterMarkView.topAnchor constraintEqualToAnchor:_waterMarkContentView.topAnchor].active = YES;
-//    [_warterMarkView.bottomAnchor constraintEqualToAnchor:_waterMarkContentView.bottomAnchor].active = YES;
-//    [_warterMarkView layoutIfNeeded];
+    _warterMarkView.translatesAutoresizingMaskIntoConstraints = false;
+    //Constraints
+    [_warterMarkView.leadingAnchor constraintEqualToAnchor:_waterMarkContentView.leadingAnchor].active = YES;
+    [_warterMarkView.trailingAnchor constraintEqualToAnchor:_waterMarkContentView.trailingAnchor].active = YES;
+    [_warterMarkView.topAnchor constraintEqualToAnchor:_waterMarkContentView.topAnchor].active = YES;
+    [_warterMarkView.bottomAnchor constraintEqualToAnchor:_waterMarkContentView.bottomAnchor].active = YES;
+    [_warterMarkView layoutIfNeeded];
     if(self.isWatermarkActive == NO){
         [self reloadFilter];
     }else{
