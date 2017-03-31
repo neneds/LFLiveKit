@@ -67,6 +67,7 @@
         self.zoomScale = 1.0;
         self.mirror = YES;
         self.isWatermarkActive = NO;
+        [self setSaveLocalVideo:YES];
         
         if(!_videoCamera){
             _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionBack];
