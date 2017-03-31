@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIView *waterMarkContentView;
 
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
+@property (nonatomic) BOOL *isWatermarkActive;
 
 
 @property (atomic, strong) AVCaptureSession *_captureSession;
@@ -65,6 +66,7 @@
         self.brightLevel = 0.5;
         self.zoomScale = 1.0;
         self.mirror = YES;
+        self.isWatermarkActive = NO;
         
         if(!_videoCamera){
             _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionBack];
@@ -273,7 +275,11 @@
     [_warterMarkView.topAnchor constraintEqualToAnchor:_waterMarkContentView.topAnchor].active = YES;
     [_warterMarkView.bottomAnchor constraintEqualToAnchor:_waterMarkContentView.bottomAnchor].active = YES;
     [_warterMarkView layoutIfNeeded];
-    [self reloadFilterSoft];
+    if(self.isWatermarkActive == NO){
+        [self reloadFilter];
+    }else{
+      [self reloadFilterSoft];
+    }
 }
 
 - (GPUImageUIElement *)uiElementInput{
