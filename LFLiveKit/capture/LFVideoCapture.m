@@ -273,7 +273,7 @@
     [_warterMarkView.topAnchor constraintEqualToAnchor:_waterMarkContentView.topAnchor].active = YES;
     [_warterMarkView.bottomAnchor constraintEqualToAnchor:_waterMarkContentView.bottomAnchor].active = YES;
     [_warterMarkView layoutIfNeeded];
-    [self reloadFilter];
+    [self reloadFilterSoft];
 }
 
 - (GPUImageUIElement *)uiElementInput{
@@ -391,6 +391,15 @@
     [self.uiElementInput forceProcessingAtSize:self.configuration.videoSize];
     
     
+    //< 输出数据
+    __weak typeof(self) _self = self;
+    [self.output setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
+        [_self processVideo:output];
+    }];
+    
+}
+
+- (void)reloadFilterSoft{
     //< 输出数据
     __weak typeof(self) _self = self;
     [self.output setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
