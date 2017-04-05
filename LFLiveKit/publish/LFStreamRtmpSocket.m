@@ -19,8 +19,8 @@ static const NSInteger RetryTimesMargin = 3;
 
 
 #define RTMP_RECEIVE_TIMEOUT    2
-#define DATA_ITEMS_MAX_COUNT 100
-#define RTMP_DATA_RESERVE_SIZE 400
+#define DATA_ITEMS_MAX_COUNT 300//100
+#define RTMP_DATA_RESERVE_SIZE 1500//400
 #define RTMP_HEAD_SIZE (sizeof(RTMPPacket) + RTMP_MAX_HEADER_SIZE)
 
 #define SAVC(x)    static const AVal av_ ## x = AVC(#x)

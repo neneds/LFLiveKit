@@ -383,7 +383,7 @@
         [self.filter addTarget:self.blendFilter];
         [self.uiElementInput addTarget:self.blendFilter];
         [self.blendFilter addTarget:self.gpuImageView];
-        if(self.saveLocalVideo) [self.blendFilter addTarget:self.movieWriter];
+        //if(self.saveLocalVideo) [self.blendFilter addTarget:self.movieWriter];
         [self.filter addTarget:self.output];
         [self.uiElementInput update];
     }else{
