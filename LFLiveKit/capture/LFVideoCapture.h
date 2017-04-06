@@ -95,4 +95,8 @@
 
 - (nullable AVCaptureVideoDataOutput *)getVideoOutput;
 
+- (void)startMovieWriter;
+
+- (void)stopMovieWriter;
+
 @end

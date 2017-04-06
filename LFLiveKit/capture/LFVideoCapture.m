@@ -126,8 +126,16 @@
         [UIApplication sharedApplication].idleTimerDisabled = YES;
         [self reloadFilter];
         [self.videoCamera startCameraCapture];
-        if(self.saveLocalVideo) [self.movieWriter startRecording];
     }
+}
+
+
+- (void)startMovieWriter;{
+    if(self.saveLocalVideo) [self.movieWriter startRecording];
+}
+
+- (void)stopMovieWriter;{
+    if(self.saveLocalVideo) [self.movieWriter finishRecording];
 }
 
 - (AVCaptureSession *)getCaptureSession;
