@@ -100,6 +100,15 @@
     _audioCaptureSource.running = NO;
 }
 
+#pragma mark -- Start and Stop Moview Writter
+- (void)startMovieWriter;{
+    if(self.saveLocalVideo) [self.videoCaptureSource startMovieWriter];
+}
+
+- (void)stopMovieWriter;{
+    if(self.saveLocalVideo) [self.videoCaptureSource stopMovieWriter];
+}
+
 #pragma mark -- CustomMethod
 - (void)startLive:(LFLiveStreamInfo *)streamInfo {
     if (!streamInfo) return;
