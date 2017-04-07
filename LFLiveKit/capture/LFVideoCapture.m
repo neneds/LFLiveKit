@@ -9,6 +9,7 @@
 #import "LFVideoCapture.h"
 #import "LFGPUImageBeautyFilter.h"
 #import "LFGPUImageEmptyFilter.h"
+#import "GPUImageUIElement.h"
 
 #if __has_include(<GPUImage/GPUImage.h>)
 #import <GPUImage/GPUImage.h>
@@ -422,6 +423,37 @@
     }];
     
 }
+
+- (void)reloadFilterTest{
+    //GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    self.blendFilter.mix = 1.0;
+    
+    NSDate *startTime = [NSDate date];
+    
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 240.0f, 320.0f)];
+    timeLabel.font = [UIFont systemFontOfSize:17.0f];
+    timeLabel.text = @"Time: 0.0 s";
+    timeLabel.textAlignment = UITextAlignmentCenter;
+    timeLabel.backgroundColor = [UIColor clearColor];
+    timeLabel.textColor = [UIColor whiteColor];
+    
+    _uiElementInput = [[GPUImageUIElement alloc] initWithView:timeLabel];
+    
+    [self.filter addTarget:_blendFilter];
+    [_uiElementInput addTarget:self.blendFilter];
+    [self.blendFilter addTarget:self.gpuImageView];
+    
+    __unsafe_unretained GPUImageUIElement *weakUIElementInput = _uiElementInput;
+    __weak typeof(self) weakSelf = self;
+    [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
+        timeLabel.text = [NSString stringWithFormat:@"Recording Time: %f s", -[startTime timeIntervalSinceNow]];
+        [weakUIElementInput update];
+        [weakSelf processVideo:_output];
+    }];
+    
+}
+
+
 
 - (void)reloadMirror{
     if(self.mirror && self.captureDevicePosition == AVCaptureDevicePositionFront){
