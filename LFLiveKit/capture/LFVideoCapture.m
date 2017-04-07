@@ -444,6 +444,11 @@
     [_uiElementInput addTarget:self.blendFilter];
     [self.blendFilter addTarget:self.gpuImageView];
     
+    [self.filter forceProcessingAtSize:self.configuration.videoSize];
+    [self.output forceProcessingAtSize:self.configuration.videoSize];
+    [self.blendFilter forceProcessingAtSize:self.configuration.videoSize];
+    [self.uiElementInput forceProcessingAtSize:self.configuration.videoSize];
+    
     __unsafe_unretained GPUImageUIElement *weakUIElementInput = _uiElementInput;
     __weak typeof(self) weakSelf = self;
     [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
