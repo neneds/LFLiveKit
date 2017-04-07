@@ -453,9 +453,10 @@
     __unsafe_unretained GPUImageUIElement *weakUIElementInput = _uiElementInput;
     __weak typeof(self) weakSelf = self;
     [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
+        [weakSelf processVideo:_output];
         timeLabel.text = [NSString stringWithFormat:@"Recording Time: %f s", -[startTime timeIntervalSinceNow]];
         [weakUIElementInput update];
-        [weakSelf processVideo:_output];
+        
     }];
     
 }
