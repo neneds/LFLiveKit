@@ -439,10 +439,11 @@
     timeLabel.textColor = [UIColor whiteColor];
     
     _uiElementInput = [[GPUImageUIElement alloc] initWithView:timeLabel];
-    
-    [self.filter addTarget:_blendFilter];
-    [_uiElementInput addTarget:self.blendFilter];
+    [self.filter addTarget:self.blendFilter];
+    [self.uiElementInput addTarget:self.blendFilter];
     [self.blendFilter addTarget:self.gpuImageView];
+    //if(self.saveLocalVideo) [self.blendFilter addTarget:self.movieWriter];
+    [self.filter addTarget:self.output];    
     
     [self.filter forceProcessingAtSize:self.configuration.videoSize];
     [self.output forceProcessingAtSize:self.configuration.videoSize];
