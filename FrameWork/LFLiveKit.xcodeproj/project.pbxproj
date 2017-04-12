@@ -24,7 +24,7 @@
 /* Begin PBXBuildFile section */
 		84358FF41DD1FEB600811FC7 /* GLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 84358E871DD1FEB500811FC7 /* GLProgram.h */; };
 		84358FF51DD1FEB600811FC7 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 84358E881DD1FEB500811FC7 /* GLProgram.m */; };
-		84358FF61DD1FEB600811FC7 /* GPUImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 84358E891DD1FEB500811FC7 /* GPUImage.h */; };
+		84358FF61DD1FEB600811FC7 /* GPUImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 84358E891DD1FEB500811FC7 /* GPUImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84358FF71DD1FEB600811FC7 /* GPUImage3x3ConvolutionFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84358E8A1DD1FEB500811FC7 /* GPUImage3x3ConvolutionFilter.h */; };
 		84358FF81DD1FEB600811FC7 /* GPUImage3x3ConvolutionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84358E8B1DD1FEB500811FC7 /* GPUImage3x3ConvolutionFilter.m */; };
 		84358FF91DD1FEB600811FC7 /* GPUImage3x3TextureSamplingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84358E8C1DD1FEB500811FC7 /* GPUImage3x3TextureSamplingFilter.h */; };
@@ -1718,6 +1718,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84358FF61DD1FEB600811FC7 /* GPUImage.h in Headers */,
 				84D8B5DE1D768B6E00752B56 /* LFLiveDebug.h in Headers */,
 				843590CB1DD1FEB600811FC7 /* GPUImagePerlinNoiseFilter.h in Headers */,
 				843591501DD1FEB600811FC7 /* bytes.h in Headers */,
@@ -1897,7 +1898,6 @@
 				843590031DD1FEB600811FC7 /* GPUImageAverageColor.h in Headers */,
 				843590571DD1FEB600811FC7 /* GPUImageFourInputFilter.h in Headers */,
 				8435909D1DD1FEB600811FC7 /* GPUImageLowPassFilter.h in Headers */,
-				84358FF61DD1FEB600811FC7 /* GPUImage.h in Headers */,
 				84D8B5CA1D768B6E00752B56 /* LFHardwareAudioEncoder.h in Headers */,
 				843590891DD1FEB600811FC7 /* GPUImageKuwaharaFilter.h in Headers */,
 				8435900B1DD1FEB600811FC7 /* GPUImageBrightnessFilter.h in Headers */,

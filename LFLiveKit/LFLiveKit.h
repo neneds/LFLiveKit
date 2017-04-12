@@ -17,7 +17,7 @@
 #import "LFLiveStreamInfo.h"
 #import "LFVideoFrame.h"
 #import "LFLiveDebug.h"
-#import <GPUImage/GPUImageFramework.h>
+#import "GPUImage.h"
 
 #endif
 
