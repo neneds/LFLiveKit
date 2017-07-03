@@ -391,7 +391,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
 
         if (!assetWriterAudioInput.readyForMoreMediaData && _encodingLiveVideo)
         {
-            NSLog(@"1: Had to drop an audio frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, currentSampleTime)));
+            //NSLog(@"1: Had to drop an audio frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, currentSampleTime)));
             if (_shouldInvalidateAudioSampleWhenDone)
             {
                 CMSampleBufferInvalidate(audioBuffer);
@@ -462,7 +462,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             }
             if (!assetWriterAudioInput.readyForMoreMediaData)
             {
-                NSLog(@"2: Had to drop an audio frame %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, currentSampleTime)));
+                //NSLog(@"2: Had to drop an audio frame %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, currentSampleTime)));
             }
             else if(assetWriter.status == AVAssetWriterStatusWriting)
             {
@@ -754,7 +754,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
         if (!assetWriterVideoInput.readyForMoreMediaData && _encodingLiveVideo)
         {
             [inputFramebufferForBlock unlock];
-            NSLog(@"1: Had to drop a video frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, frameTime)));
+            //NSLog(@"1: Had to drop a video frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, frameTime)));
             return;
         }
         
@@ -794,7 +794,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             }
             if (!assetWriterVideoInput.readyForMoreMediaData)
             {
-                NSLog(@"2: Had to drop a video frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, frameTime)));
+                //NSLog(@"2: Had to drop a video frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, frameTime)));
             }
             else if(self.assetWriter.status == AVAssetWriterStatusWriting)
             {
