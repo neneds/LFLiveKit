@@ -71,7 +71,7 @@
         self.brightLevel = 0.5;
         self.zoomScale = 1.0;
         self.mirror = YES;
-        self.isWatermarkActive = NO;
+        self.isWatermarkActive = false;
         [self setSaveLocalVideo:YES];
         
         if(!_videoCamera){
@@ -200,6 +200,7 @@
 }
 
 - (void)setTorch:(BOOL)torch {
+    /*
     BOOL ret;
     if (!self.videoCamera.captureSession) return;
     AVCaptureSession *session = (AVCaptureSession *)self.videoCamera.captureSession;
@@ -221,6 +222,7 @@
     }
     [session commitConfiguration];
     _torch = ret;
+     */
 }
 
 - (BOOL)torch {

@@ -6,9 +6,9 @@
 #import "GPUImageColorConversion.h"
 
 //Optionally override the YUV to RGB matrices
-void setColorConversion601( GLfloat conversionMatrix[9] );
-void setColorConversion601FullRange( GLfloat conversionMatrix[9] );
-void setColorConversion709( GLfloat conversionMatrix[9] );
+void setColorConversion601( GLfloat conversionMatrix[_Nullable 9] );
+void setColorConversion601FullRange( GLfloat conversionMatrix[_Nullable 9] );
+void setColorConversion709( GLfloat conversionMatrix[_Nullable 9] );
 
 
 //Delegate Protocal for Face Detection.
@@ -48,10 +48,10 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 @property(readonly, nonatomic) BOOL isRunning;
 
 /// The AVCaptureSession used to capture from the camera
-@property(readonly, retain, nonatomic) AVCaptureSession *captureSession;
+@property(readonly, retain, nonatomic) AVCaptureSession * _Nonnull captureSession;
 
 /// This enables the capture session preset to be changed on the fly
-@property (readwrite, nonatomic, copy) NSString *captureSessionPreset;
+@property (readwrite, nonatomic, copy) NSString * _Nonnull captureSessionPreset;
 
 /// This sets the frame rate of the camera (iOS 5 and above only)
 /**
@@ -67,7 +67,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 @property(readwrite, nonatomic) BOOL runBenchmark;
 
 /// Use this property to manage camera settings. Focus point, exposure point, etc.
-@property(readonly) AVCaptureDevice *inputCamera;
+@property(readonly) AVCaptureDevice * _Nonnull inputCamera;
 
 /// This determines the rotation applied to the output image, based on the source material
 @property(readwrite, nonatomic) UIInterfaceOrientation outputImageOrientation;
@@ -75,7 +75,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 /// These properties determine whether or not the two camera orientations should be mirrored. By default, both are NO.
 @property(readwrite, nonatomic) BOOL horizontallyMirrorFrontFacingCamera, horizontallyMirrorRearFacingCamera;
 
-@property(nonatomic, assign) id<GPUImageVideoCameraDelegate> delegate;
+@property(nonatomic, assign) id <GPUImageVideoCameraDelegate> delegate;
 
 /// @name Initialization and teardown
 
@@ -86,7 +86,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
  @param sessionPreset Session preset to use
  @param cameraPosition Camera to capture from
  */
-- (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
+- (id _Nonnull )initWithSessionPreset:(NSString *_Nonnull)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
 
 /** Add audio capture to the session. Adding inputs and outputs freezes the capture session momentarily, so you
     can use this method to add the audio inputs and outputs early, if you're going to set the audioEncodingTarget 
@@ -124,12 +124,12 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 /** Process a video sample
  @param sampleBuffer Buffer to process
  */
-- (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+- (void)processVideoSampleBuffer:(CMSampleBufferRef _Nullable )sampleBuffer;
 
 /** Process an audio sample
  @param sampleBuffer Buffer to process
  */
-- (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+- (void)processAudioSampleBuffer:(CMSampleBufferRef _Nullable )sampleBuffer;
 
 /** Get the position (front, rear) of the source camera
  */
@@ -137,7 +137,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 
 /** Get the AVCaptureConnection of the source camera
  */
-- (AVCaptureConnection *)videoCaptureConnection;
+- (AVCaptureConnection *_Nullable)videoCaptureConnection;
 
 /** This flips between the front and rear cameras
  */
