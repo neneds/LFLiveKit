@@ -29,6 +29,7 @@
 @property (nonatomic, strong) LFLiveVideoConfiguration *configuration;
 
 @property (nonatomic, strong) GPUImageAlphaBlendFilter *blendFilter;
+@property (nonatomic, strong) GPUImageBrightnessFilter *baseFilter;
 @property (nonatomic, strong) GPUImageUIElement *uiElementInput;
 @property (nonatomic, strong) UIView *waterMarkContentView;
 
@@ -41,6 +42,10 @@
 @property (atomic, strong) AVCaptureVideoDataOutput *videoOutput;
 @property (atomic, strong) AVCaptureDeviceInput *audioInput;
 @property (atomic, strong) AVCaptureAudioDataOutput  *audioOutput;
+
+
+
+
 
 
 
@@ -266,6 +271,39 @@
 
 - (CGFloat)zoomScale {
     return _zoomScale;
+}
+
+#pragma mark - Render video overlay
+
+- (void) renderOverlay:(UIView *) overlayView {
+    
+    //setup overlayview for video size
+    
+    
+    
+    _uiElementInput = [[GPUImageUIElement alloc] initWithView:overlayView];
+    _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    _blendFilter.mix = 1.0;
+    _baseFilter = [[GPUImageBrightnessFilter alloc] init];
+    [_blendFilter disableSecondFrameCheck];
+    [_baseFilter addTarget:_blendFilter];
+    [self.blendFilter addTarget:self.gpuImageView];
+    [self.filter addTarget:self.output];
+    [self.uiElementInput update];
+    [_uiElementInput addTarget:_blendFilter];
+    [self.filter forceProcessingAtSize:self.configuration.videoSize];
+    [self.output forceProcessingAtSize:self.configuration.videoSize];
+    [self.blendFilter forceProcessingAtSize:self.configuration.videoSize];
+    [self.baseFilter forceProcessingAtSize:self.configuration.videoSize];
+    [self.uiElementInput forceProcessingAtSize:self.configuration.videoSize];
+    
+    __weak typeof(self) _self = self;
+    [self.output setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
+        [_self processVideo:output];
+        //Update data
+        [_self.uiElementInput update];
+    }];
+    
 }
 
 - (void)setWarterMarkView:(UIView *)warterMarkView{
