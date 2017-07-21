@@ -8,18 +8,11 @@
 
 #import "LFVideoCapture.h"
 
-
-
-
 @interface LFVideoCapture () <GPUImageVideoCameraDelegate>
 
-
 @property (nonatomic, strong) UIView *waterMarkContentView;
-
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
 @property (nonatomic) BOOL *isWatermarkActive;
-
-
 @property (atomic, strong) AVCaptureSession *_captureSession;
 @property (atomic, strong) AVCaptureDeviceInput *videoInput;
 @property (atomic, strong) AVCaptureVideoDataOutput *videoOutput;

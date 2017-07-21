@@ -9,12 +9,14 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "LFVideoCapture.h"
 #import "LFLiveStreamInfo.h"
 #import "LFAudioFrame.h"
 #import "LFVideoFrame.h"
 #import "LFLiveAudioConfiguration.h"
 #import "LFLiveVideoConfiguration.h"
 #import "LFLiveDebug.h"
+
 
 
 
@@ -129,6 +131,8 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 
 /* The saveLocalVideoPath is save the local video  path */
 @property (nonatomic, strong, nullable) NSURL *saveLocalVideoPath;
+
+@property (nonatomic, strong) LFVideoCapture *videoCaptureSource;
 
 #pragma mark - Initializer
 ///=============================================================================

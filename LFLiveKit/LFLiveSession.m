@@ -28,9 +28,6 @@
 @property (nonatomic, strong) LFLiveVideoConfiguration *videoConfiguration;
 /// 声音采集
 @property (nonatomic, strong) LFAudioCapture *audioCaptureSource;
-/// 视频采集
-
-@property (nonatomic, strong) LFVideoCapture *videoCaptureSource;
 /// 音频编码
 @property (nonatomic, strong) id<LFAudioEncoding> audioEncoder;
 /// 视频编码
