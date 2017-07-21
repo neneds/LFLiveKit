@@ -14,7 +14,6 @@
 #import "LFLiveStreamInfo.h"
 #import "LFGPUImageBeautyFilter.h"
 #import "LFH264VideoEncoder.h"
-#import "LFVideoCapture.h"
 #import "LFAudioCapture.h"
 
 
@@ -27,7 +26,7 @@
 /// 声音采集
 @property (nonatomic, strong) LFAudioCapture *audioCaptureSource;
 /// 视频采集
-@property (nonatomic, strong) LFVideoCapture *videoCaptureSource;
+
 /// 音频编码
 @property (nonatomic, strong) id<LFAudioEncoding> audioEncoder;
 /// 视频编码
