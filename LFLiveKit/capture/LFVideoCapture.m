@@ -7,30 +7,13 @@
 //
 
 #import "LFVideoCapture.h"
-#import "LFGPUImageBeautyFilter.h"
-#import "LFGPUImageEmptyFilter.h"
 
-#if __has_include(<GPUImage/GPUImage.h>)
-#import <GPUImage/GPUImage.h>
-#elif __has_include("GPUImage/GPUImage.h")
-#import "GPUImage/GPUImage.h"
-#else
-#import "GPUImage.h"
-#endif
+
+
 
 @interface LFVideoCapture () <GPUImageVideoCameraDelegate>
 
-@property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
-@property (nonatomic, strong) LFGPUImageBeautyFilter *beautyFilter;
-@property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;
-@property (nonatomic, strong) GPUImageCropFilter *cropfilter;
-@property (nonatomic, strong) GPUImageOutput<GPUImageInput> *output;
-@property (nonatomic, strong) GPUImageView *gpuImageView;
-@property (nonatomic, strong) LFLiveVideoConfiguration *configuration;
 
-@property (nonatomic, strong) GPUImageAlphaBlendFilter *blendFilter;
-@property (nonatomic, strong) GPUImageBrightnessFilter *baseFilter;
-@property (nonatomic, strong) GPUImageUIElement *uiElementInput;
 @property (nonatomic, strong) UIView *waterMarkContentView;
 
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
@@ -42,12 +25,6 @@
 @property (atomic, strong) AVCaptureVideoDataOutput *videoOutput;
 @property (atomic, strong) AVCaptureDeviceInput *audioInput;
 @property (atomic, strong) AVCaptureAudioDataOutput  *audioOutput;
-
-
-
-
-
-
 
 @end
 

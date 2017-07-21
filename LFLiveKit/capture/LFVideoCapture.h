@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "LFLiveVideoConfiguration.h"
+#import "LFGPUImageBeautyFilter.h"
+#import "LFGPUImageEmptyFilter.h"
+#if __has_include(<GPUImage/GPUImage.h>)
+#import <GPUImage/GPUImage.h>
+#elif __has_include("GPUImage/GPUImage.h")
+#import "GPUImage/GPUImage.h"
+#else
+#import "GPUImage.h"
+#endif
 
 @class LFVideoCapture;
 /** LFVideoCapture callback videoData */
@@ -23,6 +32,18 @@
 ///=============================================================================
 /// @name Attribute
 ///=============================================================================
+
+@property (nonatomic, strong) GPUImageVideoCamera * _Nullable videoCamera;
+@property (nonatomic, strong) LFGPUImageBeautyFilter * _Nullable beautyFilter;
+@property (nonatomic, strong) GPUImageOutput<GPUImageInput> * _Nullable filter;
+@property (nonatomic, strong) GPUImageCropFilter * _Nullable cropfilter;
+@property (nonatomic, strong) GPUImageOutput<GPUImageInput> * _Nullable output;
+@property (nonatomic, strong) GPUImageView * _Nullable gpuImageView;
+@property (nonatomic, strong) LFLiveVideoConfiguration * _Nullable configuration;
+
+@property (nonatomic, strong) GPUImageAlphaBlendFilter * _Nullable blendFilter;
+@property (nonatomic, strong) GPUImageBrightnessFilter * _Nullable baseFilter;
+@property (nonatomic, strong) GPUImageUIElement * _Nullable uiElementInput;
 
 /** The delegate of the capture. captureData callback */
 @property (nullable, nonatomic, weak) id<LFVideoCaptureDelegate> delegate;

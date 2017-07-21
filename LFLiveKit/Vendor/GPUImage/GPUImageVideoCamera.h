@@ -44,6 +44,8 @@ void setColorConversion709( GLfloat conversionMatrix[_Nullable 9] );
     __unsafe_unretained id<GPUImageVideoCameraDelegate> _delegate;
 }
 
+
+
 /// Whether or not the underlying AVCaptureSession is running
 @property(readonly, nonatomic) BOOL isRunning;
 
@@ -75,7 +77,7 @@ void setColorConversion709( GLfloat conversionMatrix[_Nullable 9] );
 /// These properties determine whether or not the two camera orientations should be mirrored. By default, both are NO.
 @property(readwrite, nonatomic) BOOL horizontallyMirrorFrontFacingCamera, horizontallyMirrorRearFacingCamera;
 
-@property(nonatomic, assign) id <GPUImageVideoCameraDelegate> delegate;
+@property(nullable,nonatomic, assign) id <GPUImageVideoCameraDelegate> delegate;
 
 /// @name Initialization and teardown
 
