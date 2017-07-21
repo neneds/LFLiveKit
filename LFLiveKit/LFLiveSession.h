@@ -15,7 +15,7 @@
 #import "LFLiveAudioConfiguration.h"
 #import "LFLiveVideoConfiguration.h"
 #import "LFLiveDebug.h"
-#import "LFVideoCapture.h"
+
 
 
 
@@ -67,8 +67,6 @@ typedef NS_ENUM(NSInteger,LFLiveCaptureTypeMask) {
 
 /** The running control start capture or stop capture*/
 @property (nonatomic, assign) BOOL running;
-
-@property (nonatomic, strong) LFVideoCapture * _Nullable videoCaptureSource;
 
 /** The preView will show OpenGL ES view*/
 @property (nonatomic, strong, null_resettable) UIView *preView;

@@ -20,6 +20,8 @@
 
 @interface LFLiveSession ()<LFAudioCaptureDelegate, LFVideoCaptureDelegate, LFAudioEncodingDelegate, LFVideoEncodingDelegate, LFStreamSocketDelegate>
 
+- (LFVideoCapture *)getVideoCapture;
+
 /// 音频配置
 @property (nonatomic, strong) LFLiveAudioConfiguration *audioConfiguration;
 /// 视频配置
@@ -28,6 +30,7 @@
 @property (nonatomic, strong) LFAudioCapture *audioCaptureSource;
 /// 视频采集
 
+@property (nonatomic, strong) LFVideoCapture *videoCaptureSource;
 /// 音频编码
 @property (nonatomic, strong) id<LFAudioEncoding> audioEncoder;
 /// 视频编码
@@ -164,6 +167,10 @@
         self.hasCaptureAudio = YES;
         if(self.AVAlignment) [self pushSendBuffer:frame];
     }
+}
+
+- (LFVideoCapture *)getVideoCapture;{
+    return _videoCaptureSource;
 }
 
 
