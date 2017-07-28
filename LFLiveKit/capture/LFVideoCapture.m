@@ -9,7 +9,8 @@
 #import "LFVideoCapture.h"
 
 @interface LFVideoCapture () <GPUImageVideoCameraDelegate>
-
+/*** The warterMarkView control whether the watermark is displayed or not ,if set ni,will remove watermark,otherwise add *.*/
+@property (nonatomic, strong, nullable) UIView *warterMarkView;
 @property (nonatomic, strong) UIView *waterMarkContentView;
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
 @property (nonatomic) BOOL *isWatermarkActive;
@@ -79,9 +80,6 @@
     }
 }
 
-#pragma mark -- GPUImageCameraDelegate
-
-
 
 #pragma mark -- Setter Getter
 
@@ -112,6 +110,7 @@
 - (void)stopMovieWriter;{
     if(self.saveLocalVideo) [self.movieWriter finishRecording];
 }
+
 
 - (AVCaptureSession *)getCaptureSession;
 {
@@ -245,38 +244,6 @@
     return _zoomScale;
 }
 
-#pragma mark - Render video overlay
-
-- (void) renderOverlay:(UIView *) overlayView {
-    
-    //setup overlayview for video size
-    
-    
-    
-    _uiElementInput = [[GPUImageUIElement alloc] initWithView:overlayView];
-    _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-    _blendFilter.mix = 1.0;
-    _baseFilter = [[GPUImageBrightnessFilter alloc] init];
-    [_blendFilter disableSecondFrameCheck];
-    [_baseFilter addTarget:_blendFilter];
-    [self.blendFilter addTarget:self.gpuImageView];
-    [self.filter addTarget:self.output];
-    [self.uiElementInput update];
-    [_uiElementInput addTarget:_blendFilter];
-    [self.filter forceProcessingAtSize:self.configuration.videoSize];
-    [self.output forceProcessingAtSize:self.configuration.videoSize];
-    [self.blendFilter forceProcessingAtSize:self.configuration.videoSize];
-    [self.baseFilter forceProcessingAtSize:self.configuration.videoSize];
-    [self.uiElementInput forceProcessingAtSize:self.configuration.videoSize];
-    
-    __weak typeof(self) _self = self;
-    [self.output setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
-        [_self processVideo:output];
-        //Update data
-        [_self.uiElementInput update];
-    }];
-    
-}
 
 - (void)setWarterMarkView:(UIView *)warterMarkView{
     if(_warterMarkView && _warterMarkView.superview){

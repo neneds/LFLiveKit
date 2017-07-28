@@ -78,9 +78,6 @@
 /** The videoFrameRate control videoCapture output data count */
 @property (nonatomic, assign) NSInteger videoFrameRate;
 
-/*** The warterMarkView control whether the watermark is displayed or not ,if set ni,will remove watermark,otherwise add *.*/
-@property (nonatomic, strong, nullable) UIView *warterMarkView;
-
 /* The currentImage is videoCapture shot */
 @property (nonatomic, strong, nullable) UIImage *currentImage;
 
@@ -119,5 +116,7 @@
 - (void)startMovieWriter;
 
 - (void)stopMovieWriter;
+
+- (void)processVideo:(GPUImageOutput *_Nullable)output;
 
 @end

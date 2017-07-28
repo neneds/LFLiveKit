@@ -380,13 +380,13 @@
     return self.audioCaptureSource.muted;
 }
 
-- (void)setWarterMarkView:(UIView *)warterMarkView{
-    [self.videoCaptureSource setWarterMarkView:warterMarkView];
-}
-
-- (nullable UIView*)warterMarkView{
-    return self.videoCaptureSource.warterMarkView;
-}
+//- (void)setWarterMarkView:(UIView *)warterMarkView{
+//    [self.videoCaptureSource setWarterMarkView:warterMarkView];
+//}
+//
+//- (nullable UIView*)warterMarkView{
+//    return self.videoCaptureSource.warterMarkView;
+//}
 
 - (nullable UIImage *)currentImage{
     return self.videoCaptureSource.currentImage;
